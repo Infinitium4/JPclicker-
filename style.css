@@ -1,0 +1,267 @@
+body {
+    display: grid; 
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(109, 100, 96);
+    color: aliceblue;
+    user-select: none ;
+}
+
+.main {
+    display: flex;
+    gap: 200px;
+
+}
+.left h3 {
+    text-align: center;
+    font-size: 30px;
+    margin: 30px;
+}
+
+.right {
+    max-height: 400px;
+    width: 550px;
+    padding: 20px 11px;
+    overflow-y: scroll;
+}
+
+.Money-image {
+    width: 100px;
+}
+
+.Money-image:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.Money-image:active {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+.upgrade {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 330px;
+    height: 70px;
+    border: 4px solid white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 10px;
+
+}
+.upgrade-image {
+    position: relative;
+    left: -50px;
+    top: 27px;
+    width: 170px;
+    border-radius: 50%;
+    
+}
+
+.upgrade-Milo {
+    position: relative;
+    left: 0px;
+    top: -10px;
+    width: 80px;
+    border-radius: 50%;
+    
+}
+.Money.img {
+    width: 20px;
+    
+}
+
+.cost-info {
+    display: flex;
+}
+ 
+.mid-section h4{
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.mid-section p {
+    margin: 0;
+}
+
+
+.next-level-info {
+    position: absolute;
+    right: -105px;
+    background-color: rgb(90, 89, 90);
+    height: 80px;
+    width: 100px;
+     text-align: center;
+     display: none;
+}
+
+.upgrade:hover .next-level-info {
+    display: block;
+}
+
+
+/* Style doux pour le niveau 10 */
+.upgrade.level-10 {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15));
+    border-color: #d4af37; /* Or doux */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+/* Style pour level-50 */
+.upgrade.level-50 {
+    background: linear-gradient(135deg, #6e93d6 0%, #9dd4ff 100%);
+    border-color: #8ecae6;
+    box-shadow: 0 0 15px rgba(141, 211, 255, 0.4);
+    border-radius: 30px;
+    color: #ffffff;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.barre-stats {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #222;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    border-top: 2px solid #444;
+}
+
+::-webkit-scrollbar {
+width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7e7e7e;
+}
+
+.upgrade-emile {
+   position: relative;
+   left: 0px;
+    top: 0px;
+    width: 130px;
+    border-radius: 50%;
+
+}
+
+.achievements-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.toggle-achievements {
+    background-color: #222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.achievements-list {
+    margin-top: 10px;
+    padding: 10px;
+    width: 250px;
+    background-color: #333;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.achievement {
+    border-bottom: 1px solid #555;
+    padding: 6px 0;
+}
+
+
+.level-100 {
+    border: 3px solid gold;
+    background: linear-gradient(135deg, #ffdd00, #ffaa00);
+    box-shadow: 0 0 20px gold;
+    color: black;
+    font-weight: bold;
+}
+
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.achievement {
+    background: rgba(255, 215, 0, 0.1); /* or gold semi-transparent */
+    border: 2px solid gold;
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 0 15px gold;
+    animation: fadeIn 0.6s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.achievement::before {
+    content: '🏅';
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.version-label {
+    position: fixed;
+    top: 10px;
+    left: 10px; 
+    background-color: #2c2c2c;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 999;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}

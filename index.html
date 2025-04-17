@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP Clicker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div class="version-label">Version 1.1 ✅</div>
+        <div class="main">
+            <div class="left">
+                <h3>Money: <span class="money-number">0</span></h3>
+                <img src="assets/icons8-cigarette-48.png" alt="" class="Money-image" onclick="incrementMoney()" draggable="false">
+            </div>
+            <div class="right">
+                <!-- Launis and Milo upgrades -->
+                <div class="upgrade" onclick="buyClicker()">
+                    <div class="left-section">
+                        <img src="./assets/Launis.png" alt="" class="upgrade-image" draggable="false">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Launis</h4>
+                        <div class="cost-info">
+                            <p>prix : <span class="Clicker-cost">10</span></p>
+                            <img src="assets/icons8-cigarette-48.png" alt="" class="Money-img" draggable="false">
+                        </div>
+                    </div>
+                    <div class="right-section">Level <span class="clicker-level">0</span></div>
+                    <div class="next-level-info">
+                        <p>+<span class="clicker-increase">1</span> Money per click</p>
+                    </div>
+                </div>
+                <div class="upgrade hidden milo" onclick="buyMilo()">
+
+                    <div class="left-section">
+                        <img src="./assets/Milo.png" alt="" class="upgrade-Milo" draggable="false">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Milo</h4>
+                        <div class="cost-info">
+                            <p>prix : <span class="Milo-cost">10</span></p>
+                            <img src="assets/icons8-cigarette-48.png" alt="" class="Money-img" draggable="false">
+                        </div>
+                    </div>
+                    <div class="right-section">Level <span class="Milo-level">0</span></div>
+                    <div class="next-level-info">
+                        <p>+<span class="Milo-increase">1</span> Money per second</p>
+                    </div>
+                </div>
+                <div class="upgrade hidden emile" onclick="buyEmile()">
+                    <div class="left-section">
+                        <img src="./assets/Emile.png" alt="" class="upgrade-emile" draggable="false">
+                    </div>
+                    <div class="mid-section">
+                        <h4>Emile</h4>
+                        <div class="cost-info">
+                            <p>prix : <span class="emile-cost">10</span></p>
+                            <img src="assets/icons8-cigarette-48.png" alt="" class="Money-img" draggable="false">
+                        </div>
+                    </div>
+                    <div class="right-section">Level <span class="emile-level">0</span></div>
+                    <div class="next-level-info">
+                        <p>+<span class="emile-increase">1</span> Money per second</p>
+                    </div>
+                </div>
+                <div class="achievements-menu">
+                    <button class="toggle-achievements" onclick="toggleAchievements()">🏅 Achievements</button>
+                    <div class="achievements-list hidden">
+                        <!-- Les achievements seront ajoutés ici dynamiquement -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Ajoute ce bloc en bas du body -->
+    <div class="barre-stats">
+        <p>💰 Argent par clic : <span id="mpc-display">1</span></p>
+        <p>⏱️ Argent par seconde : <span id="mps-display">0.00</span></p>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
