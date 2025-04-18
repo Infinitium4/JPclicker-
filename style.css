@@ -289,13 +289,6 @@ width: 10px;
 }
 
 .achievement-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-}
-
-
-.achievement-icon {
     width: 200px;      /* ou plus : 60px, 80px, etc. */
     height: 40px;
     margin-right: 10px;
@@ -303,3 +296,5 @@ width: 10px;
     object-fit: cover;  /* Pour bien remplir sans déformer */
     right: 100;
 }
+
+

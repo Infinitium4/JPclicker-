@@ -7,7 +7,7 @@ let parsedClickercost = parseFloat(Clickercost.innerHTML);
 let parsedClickerIncrease = parseFloat(clickerIncrease.innerHTML);
 
 let emileLevel = 0;
-let emileIncomePerLevel = 0.5;
+let emileIncomePerLevel = 1.5;
 
 let miloLevel = 0;
 let miloIncomePerLevel = 1;
@@ -92,7 +92,7 @@ function buyMilo() {
 
         miloIncreaseElement.innerText = (miloLevel * miloIncomePerLevel).toFixed(2);
 
-        miloCost *= 1.5;
+        miloCost *= 1.25;
         miloCostElement.innerText = Math.round(miloCost);
 
         let miloBox = document.querySelector('.upgrade.milo');
@@ -123,7 +123,7 @@ function buyEmile() {
 
         emileIncreaseElement.innerText = (emileLevel * emileIncomePerLevel).toFixed(2);
 
-        emileCost *= 1.2;
+        emileCost *= 1.3;
         emileCostElement.innerText = Math.round(emileCost);
 
         if (emileLevel >= 25) {
@@ -208,8 +208,7 @@ function unlockAchievement(title, bonus) {
         div.appendChild(text);
         list.appendChild(div);
 
-        achievementBonus += bonus;
-        mettreAJourStats();
+        achievementBonus += bonus;        mettreAJourStats();
 
         if (title === " 4 PITBULLS ") {
             img.style.width = "70px";
@@ -234,3 +233,4 @@ const achievementImages = {
     "Launis crame sa resistance": "assets/cigarette electronique.png",
     " 4 PITBULLS ": "assets/pitbull.png"
 };
+
