@@ -19,7 +19,7 @@ let achievementsUnlocked = [];
 
 let nilsCost = 50;
 let nilsLevel = 0;
-let nilsIncrease = 2;
+let nilsIncrease = 1.5;
 
 // === CLIC ===
 function incrementMoney() {
@@ -215,6 +215,10 @@ function unlockAchievement(title, bonus) {
             img.style.height = "50px";
         }
         
+        if (title === "Nils Bad") {
+            img.style.width = "100px";
+            img.style.height = "50px";
+        }
     }
 }
 
@@ -226,11 +230,15 @@ function checkAchievements() {
     if (nilsLevel >= 1) {
         unlockAchievement(" 4 PITBULLS ", 10);
     }
+    if (nilsLevel >=50){
+        unlockAchievement("Nils Bad", 40)
+    }
 }
 
 
 const achievementImages = {
     "Launis crame sa resistance": "assets/cigarette electronique.png",
-    " 4 PITBULLS ": "assets/pitbull.png"
+    " 4 PITBULLS ": "assets/pitbull.png",
+    "Nils Bad": "assets/NilsBad.png",
 };
 
