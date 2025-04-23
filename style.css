@@ -1,3 +1,4 @@
+/* ===== BASE STYLES ===== */
 body {
     display: grid; 
     place-items: center;
@@ -6,16 +7,21 @@ body {
     padding: 0;
     background-color: rgb(109, 100, 96);
     color: aliceblue;
-    user-select: none ;
+    user-select: none;
+    font-family: Arial, sans-serif;
 }
 
+/* ===== MAIN LAYOUT ===== */
 .main {
     display: flex;
     gap: 200px;
-
 }
-.left h3 {
+
+.left {
     text-align: center;
+}
+
+.left h3 {
     font-size: 30px;
     margin: 30px;
 }
@@ -24,11 +30,13 @@ body {
     max-height: 400px;
     width: 550px;
     padding: 20px 11px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
+/* ===== MONEY CLICKER ===== */
 .Money-image {
     width: 100px;
+    transition: all 0.1s;
 }
 
 .Money-image:hover {
@@ -40,6 +48,8 @@ body {
     opacity: 0.8;
     transform: scale(1.02);
 }
+
+/* ===== UPGRADES ===== */
 .upgrade {
     display: flex;
     align-items: center;
@@ -51,15 +61,16 @@ body {
     border-radius: 20px;
     position: relative;
     margin-bottom: 10px;
-
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.3);
 }
+
 .upgrade-image {
     position: relative;
     left: -50px;
     top: 27px;
     width: 170px;
     border-radius: 50%;
-    
 }
 
 .upgrade-Milo {
@@ -68,18 +79,43 @@ body {
     top: -10px;
     width: 80px;
     border-radius: 50%;
-    
 }
-.Money.img {
+
+.upgrade-emile {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 130px;
+    border-radius: 50%;
+}
+
+.upgrade-nils {
+    position: relative;
+    left: 0px;
+    top: -5px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.upgrade-maxence {
+    position: relative;
+    left: -60px;
+    top: 35px;
+    width: 140px;
+    border-radius: 50%;
+}
+
+.Money-img {
     width: 20px;
-    
+    margin-left: 5px;
 }
 
 .cost-info {
     display: flex;
+    align-items: center;
 }
- 
-.mid-section h4{
+
+.mid-section h4 {
     margin: 0;
     margin-bottom: 20px;
     font-size: 20px;
@@ -89,6 +125,9 @@ body {
     margin: 0;
 }
 
+.right-section {
+    font-weight: bold;
+}
 
 .next-level-info {
     position: absolute;
@@ -96,39 +135,58 @@ body {
     background-color: rgb(90, 89, 90);
     height: 80px;
     width: 100px;
-     text-align: center;
-     display: none;
+    text-align: center;
+    display: none;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .upgrade:hover .next-level-info {
     display: block;
 }
 
-
-/* Style doux pour le niveau 10 */
-.upgrade.level-10 {
+/* ===== UPGRADE LEVEL STYLES ===== */
+.level-10 {
     background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.15));
-    border-color: #d4af37; /* Or doux */
+    border-color: #d4af37;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    transition: all 0.3s ease;
 }
 
-/* Style pour level-50 */
-.upgrade.level-50 {
+.level-50 {
     background: linear-gradient(135deg, #6e93d6 0%, #9dd4ff 100%);
     border-color: #8ecae6;
     box-shadow: 0 0 15px rgba(141, 211, 255, 0.4);
-    border-radius: 30px;
-    color: #ffffff;
     transform: scale(1.05);
-    transition: all 0.3s ease;
 }
 
-.hidden {
-    display: none;
+.level-100 {
+    border: 3px solid gold;
+    background: linear-gradient(135deg, #ffdd00, #ffaa00);
+    box-shadow: 0 0 20px gold;
+    color: black;
+    font-weight: bold;
 }
 
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7e7e7e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* ===== STATS BAR ===== */
 .barre-stats {
     position: fixed;
     bottom: 0;
@@ -139,170 +197,99 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 10px;
-    font-family: Arial, sans-serif;
     font-size: 16px;
     border-top: 2px solid #444;
+    z-index: 10;
 }
 
-::-webkit-scrollbar {
-width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #ffffff;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #7e7e7e;
-}
-
-.upgrade-emile {
-   position: relative;
-   left: 0px;
-    top: 0px;
-    width: 130px;
-    border-radius: 50%;
-
-}
-
+/* ===== ACHIEVEMENTS SYSTEM ===== */
 .achievements-menu {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 100;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    overflow: hidden;
+    width: 250px;
 }
 
 .toggle-achievements {
-    background-color: #222;
-    color: #fff;
-    padding: 10px;
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
     border: none;
-    cursor: pointer;
-}
-
-.achievements-list {
-    margin-top: 10px;
-    padding: 10px;
-    width: 250px;
-    background-color: #333;
-    border-radius: 10px;
-    color: white;
-    font-size: 14px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.hidden {
-    display: none;
-}
-
-.achievement {
-    border-bottom: 1px solid #555;
-    padding: 6px 0;
-}
-
-
-.level-100 {
-    border: 3px solid gold;
-    background: linear-gradient(135deg, #ffdd00, #ffaa00);
-    box-shadow: 0 0 20px gold;
-    color: black;
-    font-weight: bold;
-}
-
-.achievements-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 10px;
-}
-
-.achievement {
-    background: rgba(255, 215, 0, 0.1); /* or gold semi-transparent */
-    border: 2px solid gold;
-    border-radius: 10px;
-    padding: 10px 15px;
     color: #fff;
-    font-weight: bold;
-    box-shadow: 0 0 15px gold;
-    animation: fadeIn 0.6s ease-in-out;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
 }
 
-.achievement::before {
-    content: '🏅';
-    font-size: 1.2rem;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-.version-label {
-    position: fixed;
-    top: 10px;
-    left: 10px; 
-    background-color: #2c2c2c;
-    color: #ffffff;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    z-index: 999;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
-}
-
-
-.upgrade-nils {
-    position: relative;
-    left: 0px;
-     top: -5px;
-     width: 70px;
-     border-radius: 50%;
-
-}
-
-
-.achievement {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #1e1e1e;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(255,255,255,0.1);
+.toggle-achievements:hover {
+    background-color: #333;
 }
 
 .achievement-icon {
-    width: 200px;      /* ou plus : 60px, 80px, etc. */
-    height: 40px;
-    margin-right: 10px;
-    border-radius: 6px; /* Pour arrondir un peu les coins */
-    object-fit: cover;  /* Pour bien remplir sans déformer */
-    right: 100;
+    font-size: 18px;
 }
 
+.achievement-text {
+    flex-grow: 1;
+}
 
+.arrow {
+    font-size: 14px;
+    transition: transform 0.2s;
+}
 
-/* Style des popups */
+.achievements-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #333;
+}
+
+.achievements-list:not(.hidden) {
+    max-height: 400px;
+    padding: 10px;
+    border-top: 1px solid #444;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid gold;
+    border-radius: 8px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.achievement:last-child {
+    margin-bottom: 0;
+}
+
+.achievement img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.achievement span {
+    font-size: 14px;
+}
+
+/* ===== ACHIEVEMENT POPUPS ===== */
 .achievement-popup {
     position: fixed;
-    bottom: 20px;
+    bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
     background: linear-gradient(135deg, #ffd700, #ff9800);
@@ -315,9 +302,9 @@ width: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     z-index: 1000;
     opacity: 0;
-    transition: opacity 0.3s
-
+    transition: all 0.3s ease;
 }
+
 .achievement-popup.show {
     bottom: 30px;
     opacity: 1;
@@ -336,20 +323,49 @@ width: 10px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* Style de la liste */
-.achievement {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px;
-    margin-bottom: 5px;
-    background: rgba(255,215,0,0.1);
+/* ===== VERSION LABEL ===== */
+.version-label {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+    padding: 6px 12px;
     border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 999;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
 }
 
-.achievement-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.hidden {
+    display: none !important;
+}
+
+.upgrade-adrien {
+    position: relative;
+    left: -100px;
+    top: 20px;
+    width: 200px;
+}
+
+
+.achievement-icon[alt="Launis femboy"],
+.achievement-popup-image[alt="Launis femboy"] {
+    width: 60px;  
+    height: 40px; 
+    top: 60px;
 }
