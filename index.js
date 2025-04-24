@@ -46,7 +46,7 @@ let maxenceLevel = 0;
 let maxenceIncrease = 1.7;
 
 let adrienLevel = 0;
-let adrienIncomeperlevel = 5;
+let adrienIncomeperlevel = 10;
 
 
 // ===== FONCTIONS PRINCIPALES =====
@@ -272,7 +272,7 @@ function getAchievementBonus(title) {
         case "Launis crame sa resistance": return 0.5;
         case "4 PITBULLS": return 10;
         case "Nils Bad": return 40;
-        case "Launis femboy": return 20;
+        case "Launis femboy": return 10000;
         default: return 0;
     }
 }
