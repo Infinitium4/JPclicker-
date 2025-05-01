@@ -30,24 +30,31 @@ let parsedClickercost = parseFloat(Clickercost.textContent);
 let parsedClickerIncrease = parseFloat(clickerIncrease.textContent);
 
 let emileLevel = 0;
-let emileIncomePerLevel = 1.5;
+let emileIncomePerLevel = 2; // Augmenté de 1.5 à 2
 let miloLevel = 0;
-let miloIncomePerLevel = 1;
+let miloIncomePerLevel = 1.5; // Augmenté de 1 à 1.5
 let mpc = 1;
 let mpsBonus = 0;
 let achievementBonus = 0;
 let achievementsUnlocked = [];
 
-let nilsCost = 50;
+let nilsCost = 150;
 let nilsLevel = 0;
-let nilsIncrease = 1.5;
-let maxenceCost = 150;
+let nilsIncrease = 2; // Augmenté de 1.5 à 2
+let maxenceCost = 750; // Augmenté de 500 à 750
 let maxenceLevel = 0;
-let maxenceIncrease = 1.7;
+let maxenceIncrease = 2.5; // Augmenté de 1.7 à 2.5
 
+let lorisCost = 2500; // Augmenté de 2000 à 2500
+let lorisLevel = 0;
+let lorisIncrease = 4; // Augmenté de 3 à 4
+let lorisIncomePerLevel = 15; // Augmenté de 10 à 15
 let adrienLevel = 0;
-let adrienIncomeperlevel = 10;
+let adrienIncomeperlevel = 15; // Augmenté de 10 à 15
 
+let lutherCost = 10000; // Ajouté le coût initial manquant
+let lutherLevel = 0;
+let lutherIncomeperLevel = 15; 
 
 // ===== FONCTIONS PRINCIPALES =====
 function incrementMoney() {
@@ -98,7 +105,7 @@ function buyMilo() {
         document.querySelector('.Milo-level').textContent = miloLevel;
         document.querySelector('.Milo-increase').textContent = (miloLevel * miloIncomePerLevel).toFixed(2);
 
-        miloCost *= 1.2;
+        miloCost *= 1.15; // Diminué de 1.2 à 1.15
         document.querySelector('.Milo-cost').textContent = formatNumber(Math.round(miloCost));
 
         if (miloLevel >= 25) document.querySelector('.upgrade.emile').classList.remove('hidden');
@@ -125,7 +132,7 @@ function buyEmile() {
         document.querySelector('.emile-level').textContent = emileLevel;
         document.querySelector('.emile-increase').textContent = (emileLevel * emileIncomePerLevel).toFixed(2);
 
-        emileCost *= 1.2;
+        emileCost *= 1.18; // Diminué de 1.2 à 1.18
         document.querySelector('.emile-cost').textContent = formatNumber(Math.round(emileCost));
 
         if (emileLevel >= 25) document.querySelector('.upgrade.nils').classList.remove('hidden');
@@ -176,7 +183,7 @@ function buyMaxence() {
         document.querySelector('.maxence-level').textContent = maxenceLevel;
         document.querySelector('.maxence-increase').textContent = maxenceIncrease * maxenceLevel;
 
-        maxenceCost = Math.floor(maxenceCost * 1.2);
+        maxenceCost = Math.floor(maxenceCost * 1.22); // Augmenté de 1.2 à 1.22
         document.querySelector('.maxence-cost').textContent = formatNumber(maxenceCost);
 
         if (maxenceLevel >= 20) document.querySelector('.upgrade.adrien').classList.remove('hidden');
@@ -204,9 +211,10 @@ function buyAdrien() {
         document.querySelector('.adrien-level').textContent = adrienLevel;
         document.querySelector('.adrien-increase').textContent = (adrienLevel * adrienIncomeperlevel).toFixed(2);
 
-        adrienCost *= 1.2;
+        adrienCost *= 1.25; // Augmenté de 1.2 à 1.25
         document.querySelector('.adrien-cost').textContent = formatNumber(Math.round(adrienCost));
 
+        if (adrienLevel >= 20) document.querySelector('.upgrade.loris').classList.remove('hidden');
 
         let adrienBox = document.querySelector('.upgrade.adrien');
         adrienBox.className = 'upgrade adrien';
@@ -218,12 +226,68 @@ function buyAdrien() {
     }
 }
 
+function buyLoris() {
+    let currentMoney = parseFormattedNumber(Money.textContent);
+    if (currentMoney >= lorisCost) {
+        currentMoney -= lorisCost;
+        Money.textContent = formatNumber(currentMoney);
+
+        lorisLevel++;
+        document.querySelector('.loris-level').textContent = lorisLevel;
+        document.querySelector('.loris-increase').textContent = lorisIncrease * lorisLevel;
+
+        lorisCost = Math.floor(lorisCost * 1.25); // Augmenté de 1.15 à 1.25
+        document.querySelector('.loris-cost').textContent = formatNumber(lorisCost);
+
+        if (lorisLevel >= 20) document.querySelector('.upgrade.luther').classList.remove('hidden');
+
+        let lorisBox = document.querySelector('.upgrade.loris');
+        lorisBox.className = 'upgrade loris';
+        if (lorisLevel >= 100) lorisBox.classList.add('level-100');
+        else if (lorisLevel >= 50) lorisBox.classList.add('level-50');
+        else if (lorisLevel >= 10) lorisBox.classList.add('level-10');
+
+        mpc += lorisIncrease * lorisLevel;
+        checkAchievements();
+    }
+}
+
+function buyLuther() {
+    let currentMoney = parseFormattedNumber(Money.textContent);
+    let cost = parseFormattedNumber(document.querySelector('.luther-cost').textContent);
+    
+    if (currentMoney >= cost) {
+        currentMoney -= cost;
+        Money.textContent = formatNumber(currentMoney);
+
+        lutherLevel += 1;
+        document.querySelector('.luther-level').textContent = lutherLevel;
+        document.querySelector('.luther-increase').textContent = (lutherLevel * lutherIncomeperLevel).toFixed(2);
+
+        lutherCost = Math.floor(lutherCost * 1.25);
+        document.querySelector('.luther-cost').textContent = formatNumber(lutherCost);
+
+        let lutherBox = document.querySelector('.upgrade.luther');
+        if (lutherBox) { // Sécurité si l'élément existe
+            lutherBox.className = 'upgrade luther';
+            if (lutherLevel >= 100) lutherBox.classList.add('level-100');
+            else if (lutherLevel >= 50) lutherBox.classList.add('level-50');
+            else if (lutherLevel >= 10) lutherBox.classList.add('level-10');
+        }
+
+        mpc += lutherIncomeperLevel; // Ajout crucial manquant
+        checkAchievements();
+        updateStats(); // Mise à jour immédiate des stats
+    }
+}
+
 // ===== SYSTEME DE SUCCÈS =====
 const achievementImages = {
     "Launis crame sa resistance": "assets/cigarette electronique.png",
     "4 PITBULLS": "assets/pitbull.png",
     "Nils Bad": "assets/NilsBad.png",
     "Launis femboy": "assets/Launis femboy.png",
+    "4 BULLDOGS": "assets/4 BULLDOGS.png"
 };
 
 function showAchievementPopup(title, imageUrl) {
@@ -272,7 +336,8 @@ function getAchievementBonus(title) {
         case "Launis crame sa resistance": return 0.5;
         case "4 PITBULLS": return 10;
         case "Nils Bad": return 40;
-        case "Launis femboy": return 10000;
+        case "Launis femboy": return 50;
+        case "4 BULLDOGS": return 10000;
         default: return 0;
     }
 }
@@ -284,17 +349,30 @@ function checkAchievements() {
     if (nilsLevel >= 1) unlockAchievement("4 PITBULLS");
     if (nilsLevel >= 50) unlockAchievement("Nils Bad");
     if (clLevel >= 20) unlockAchievement("Launis femboy");
+    if (lorisLevel >= 20) unlockAchievement("4 BULLDOGS");
 }
 
 // ===== MISE À JOUR AUTOMATIQUE =====
 function updateStats() {
     document.getElementById('mpc-display').textContent = formatNumber(mpc.toFixed(2));
-    const mps = miloLevel * miloIncomePerLevel + emileLevel * emileIncomePerLevel + adrienLevel *adrienIncomeperlevel + mpsBonus + achievementBonus;
+    const mps = miloLevel * miloIncomePerLevel + 
+               emileLevel * emileIncomePerLevel + 
+               adrienLevel * adrienIncomeperlevel +
+               lorisLevel * lorisIncomePerLevel + 
+               lutherLevel * lutherIncomeperLevel +
+               mpsBonus + 
+               achievementBonus;
     document.getElementById('mps-display').textContent = formatNumber(mps.toFixed(2));
 }
 
 setInterval(() => {
-    const income = miloLevel * miloIncomePerLevel + emileLevel * emileIncomePerLevel + adrienLevel *adrienIncomeperlevel + mpsBonus + achievementBonus;
+    const income = miloLevel * miloIncomePerLevel + 
+                  emileLevel * emileIncomePerLevel + 
+                  adrienLevel * adrienIncomeperlevel +
+                  lorisLevel * lorisIncomePerLevel +
+                  lutherLevel * lutherIncomeperLevel +                  
+                  mpsBonus + 
+                  achievementBonus;
     let currentMoney = parseFormattedNumber(Money.textContent);
     currentMoney += income;
     Money.textContent = formatNumber(currentMoney);
@@ -302,11 +380,9 @@ setInterval(() => {
 }, 1000);
 
 // ===== INITIALISATION =====
-// Ne pas écraser la valeur initiale du HTML
 if (Money.textContent.trim() === '') {
-    Money.textContent = formatNumber(10000000); // Valeur par défaut si vide
+    Money.textContent = formatNumber(10000000);
 } else {
-    // Conserve la valeur du HTML en la formatant
     Money.textContent = formatNumber(parseFormattedNumber(Money.textContent));
 }
 
@@ -317,7 +393,6 @@ function toggleAchievements() {
     achievementsList.classList.toggle('hidden');
     arrow.textContent = achievementsList.classList.contains('hidden') ? '▼' : '▲';
     
-    // Si on ouvre, on scroll vers le bas pour voir les nouveaux succès
     if (!achievementsList.classList.contains('hidden')) {
         setTimeout(() => {
             achievementsList.scrollTop = achievementsList.scrollHeight;
@@ -327,3 +402,7 @@ function toggleAchievements() {
 
 updateStats();
 
+document.querySelector('.Money-image').addEventListener('click', function() {
+    this.style.animation = 'moneyClick 0.2s ease';
+    setTimeout(() => this.style.animation = '', 200);
+});
